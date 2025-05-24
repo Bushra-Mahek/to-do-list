@@ -5,7 +5,7 @@ function printTask(){
   const datee = document.getElementsByClassName('datee')[0];
   const d = datee.value;
   var i;
-    if(todo != ''){
+    if(todo != '' && d != ''){
     arr.push({todo,d});
     console.log(arr);
     localStorage.setItem('tasks',JSON.stringify(arr));
@@ -27,7 +27,7 @@ function displayTasks(){
   }
 
 
-document.querySelector('.display').innerHTML = html;
+document.querySelector('.display').innerHTML = html||'<p>no tasks added yet<p>';
 }
 
 function deleteTask(index){
