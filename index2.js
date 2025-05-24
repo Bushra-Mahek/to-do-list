@@ -34,6 +34,7 @@ function deleteTask(index){
   arr.splice(index,1);
   localStorage.setItem('tasks',JSON.stringify(arr));
   displayTasks();
+}
 
 
 function enterkey(event){
@@ -41,4 +42,4 @@ function enterkey(event){
     printTask();
   }
 }
-  window.onload = displayTasks;
+window.onload = displayTasks;
