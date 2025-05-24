@@ -27,7 +27,7 @@ function displayTasks(){
   }
 
 
-document.querySelector('.display').innerHTML = html||'<p>no tasks added yet<p>';
+document.querySelector('.display').innerHTML = html||'<p>no tasks added yet</p>';
 }
 
 function deleteTask(index){
