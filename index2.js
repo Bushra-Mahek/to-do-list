@@ -31,7 +31,7 @@ document.querySelector('.display').innerHTML = html;
 }
 
 function deleteTask(index){
-  arr.splice(index,i);
+  arr.splice(index,1);
   localStorage.setItem('tasks',JSON.stringify(arr));
   displayTasks();
 
