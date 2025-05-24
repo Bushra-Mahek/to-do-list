@@ -1,15 +1,20 @@
-const arr = [];
+let arr = JSON.parse(localStorage.getItem('tasks'))||[];
 function printTask(){
-  const task = document.getElementsByClassName('box');
-  const todo = task[0].value;
-  const datee = document.getElementsByClassName('datee');
-  const d = datee[0].value;
+  const task = document.getElementsByClassName('box')[0];
+  const todo = task.value.trim();
+  const datee = document.getElementsByClassName('datee')[0];
+  const d = datee.value;
   var i;
     if(todo != ''){
     arr.push({todo,d});
     console.log(arr);
+    localStorage.setItem('tasks',JSON.stringify(arr));
     }
-    task[0].value='';
+    task.value='';
+    datee.value = '';
+    displayTasks();
+}
+function displayTasks(){
     let html = "";
      for(i = 0;i < arr.length;i++){
       const todoobj = arr[i];
@@ -17,7 +22,7 @@ function printTask(){
       html+=`<div class='entire'>
       <div>${i+1})  ${todo}</div>              
       <div>${d}</div>          
-      <button class="del-btn" onclick="arr.splice(${i},1);printTask();">Delete</button>
+      <button class="del-btn" onclick="deleteTask(${i});">Delete</button>
       </div>`;
   }
 
@@ -25,9 +30,15 @@ function printTask(){
 document.querySelector('.display').innerHTML = html;
 }
 
+function deleteTask(index){
+  arr.splice(index,i);
+  localStorage.setItem('tasks',JSON.stringify(arr));
+  displayTasks();
+
 
 function enterkey(event){
   if(event.key === 'Enter'){
     printTask();
   }
 }
+  window.onload = displayTasks;
